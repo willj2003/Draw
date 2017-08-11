@@ -1,8 +1,9 @@
 import pygame, random
+from tkinter import*
 
 pygame.init()
 screen = pygame.display.set_mode((800,600))
-
+master = Tk()
 done = False
 draw_on = False
 last_pos = (0, 0)
@@ -22,23 +23,17 @@ def roundline(srf, color,start, end, radius=1):
         pygame.draw.circle(srf, color, (x, y), radius)
 
 while not done:
-    for e in pygame.event.get():
-        if e.type == pygame.QUIT:
-            done = True
-            pygame.quit()
-            break
-
-    if done: break
-
-    screen.fill([0, 0, 0])
-
-  
     e = pygame.event.wait()
     
     if e.type == pygame.QUIT:
         done= True
+        pygame.quit()
         break
-    
+
+    if done: break
+    if e.type == pygame.KEYDOWN and e.key == pygame.K_SPACE:
+        screen.fill ((0,0,0))
+        print ("cleared")
     if e.type == pygame.MOUSEBUTTONDOWN:
         print(e.button)
         if e.button == 1:
@@ -57,9 +52,9 @@ while not done:
         draw_on = False 
     if e.type == pygame.MOUSEMOTION:
         if draw_on:
-            print (
+            
             pygame.draw.circle(screen, color, e.pos, radius)
-            #roundline(screen,color, e.pos, last_pos, radius)
+            roundline(screen,color, e.pos, last_pos, radius)
         last_pos = e.pos
 
     pygame.display.flip()
