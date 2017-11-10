@@ -1,10 +1,6 @@
 import pygame, random,sys
 from tkinter import*
-"""x = input("please enter the height of your screen")
-y = input("please enter the length of your screen")
-int ("x")
-int ("y")
-"""
+
 pygame.init()
 screen = pygame.display.set_mode((1920,1080))
 master = Tk()
