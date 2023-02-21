@@ -4,7 +4,6 @@ import pygame
 import random
 import sys
 from tkinter import *
-
 pygame.init()
 screen = pygame.display.set_mode((1920, 1080))
 master = Tk()
@@ -16,8 +15,6 @@ radius = 3
 r = random.randint(20, 255)
 g = random.randint(20, 255)
 b = random.randint(20, 255)
-
-
 def roundline(
     srf,
     color,
@@ -32,11 +29,8 @@ def roundline(
         x = int(start[0] + float(i) / distance * dx)
         y = int(start[1] + float(i) / distance * dy)
         pygame.draw.circle(srf, color, (x, y), radius)
-
-
 while not done:
     e = pygame.event.wait()
-
     if e.type == pygame.QUIT:
         done = True
         pygame.quit()
@@ -46,17 +40,14 @@ while not done:
         break
     if e.type == pygame.KEYDOWN and e.key == pygame.K_SPACE:
         screen.fill((0, 0, 0))
-        print 'cleared'
     if e.type == pygame.MOUSEBUTTONDOWN:
-        print e.button
+        print (e.button)
         if e.button == 1:
-            print 'drawing'
             color = (r, g, b)
             pygame.draw.circle(screen, color, e.pos, radius)
             draw_on = True
-            print draw_on
+            print (draw_on)
         elif e.button == 3:
-            print 'changing'
             r = random.randint(0, 255)
             g = random.randint(0, 255)
             b = random.randint(0, 255)
@@ -75,6 +66,3 @@ while not done:
     pygame.display.flip()
 
 # pygame.quit()
-
-
-			
